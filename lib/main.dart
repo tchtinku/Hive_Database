@@ -55,12 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> autoLogIn2() async {
     var box = Hive.box('loginBox');
-    String userId = box.get('id');
+    var person = UserModel(id: '');
 
-    if (userId != null) {
+    box.add(person);
+
+    if (person != null) {
       setState(() {
-        isLoggedIn = true;
-        id = userId;
+        // isLoggedIn = true;
+        // id = userId;
+        print(box.getAt(0));
       });
       return;
     }
