@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late Box<UserModel> userBox;
   bool isLoggedIn = false;
   String? id = '';
-  String? User;
+  // String? User;
 
   @override
   void initState() {
@@ -87,10 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // box.add(person);
 
     setState(() {
-      UserModel user1 = User()..id = nameController.text;
+      UserModel user1 = UserModel(id: '')..id = nameController.text;
       userBox.put("user1", user1);
       isLoggedIn = true;
-      print(id.getAt(0));
+      // print(id.getAt(0));
     });
 
     nameController.clear();
