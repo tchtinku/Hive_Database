@@ -1,10 +1,9 @@
-import 'dart:io';
-
+// import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_login_model/user_model.dart';
-import 'package:path_provider/path_provider.dart';
+// import 'package:path_provider/path_provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 const loginBoxName = "loginBox";
@@ -38,7 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late Box<UserModel> userBox;
   bool isLoggedIn = false;
-  String id = '';
+  String? id = '';
+  String User();
 
   @override
   void initState() {
@@ -54,16 +54,16 @@ class _MyHomePageState extends State<MyHomePage> {
   // }
 
   Future<void> autoLogIn2() async {
-    var box = Hive.box('loginBox');
-    var person = UserModel(id: '');
+    // var box = Hive.box('loginBox');
 
-    box.add(person);
+    UserModel? person = userBox.get('user1');
 
-    if (person != null) {
+    // String userId = box.getAt(0);
+
+    if (person?.id != null) {
       setState(() {
-        // isLoggedIn = true;
-        // id = userId;
-        print(box.getAt(0));
+        isLoggedIn = true;
+        id = person?.id;
       });
       return;
     }
@@ -79,13 +79,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<Null> loginUser2() async {
-    var box = Hive.box('loginBox');
+    // var box = Hive.box('loginBox');
 
-    box.put('id', 'Paul@gmail.com');
+    // var person = UserModel(id: '');
+
+    // UserModel? person = userBox.put('user1', 'tinku');
+    // box.add(person);
 
     setState(() {
-      id = nameController.text;
+      UserModel user1 = User()..id = nameController.text;
+      userBox.put("user1", user1);
       isLoggedIn = true;
+      print(id.getAt(0));
     });
 
     nameController.clear();
