@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // box.add(person);
 
     setState(() {
-      UserModel user1 = UserModel(id: '')..id = nameController.text;
+      UserModel user1 = UserModel()..id = nameController.text;
       userBox.put("user1", user1);
       isLoggedIn = true;
       // print(id.getAt(0));
