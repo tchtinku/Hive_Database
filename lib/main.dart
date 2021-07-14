@@ -70,8 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<Null> logout2() async {
-    var box = Hive.box('loginBox');
-    box.delete('id');
+    userBox.delete('user1');
     setState(() {
       id = '';
       isLoggedIn = false;
@@ -93,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       userBox.put("user1", user1);
       isLoggedIn = true;
+      id = nameController.text;
       // print(id.getAt(0));
     });
 
